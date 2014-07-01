@@ -14,8 +14,9 @@
         "default_icon": {
             "19": "images/icon/19.png",
             "38": "images/icon/38.png"
-        },
-        "default_popup": "index.html#popup/index"
+        }
+//        ,
+//        "default_popup": "index.html#popup/index"
     },
     "options_page": "index.html#options/index",
     "permissions": [
