@@ -33,16 +33,18 @@ define(function (require) {
                     var work = preference.get('workAddress');
                     var start = preference.get('workingHoursStart') || 480;
                     var end = preference.get('workingHoursEnd') || 1020;
+                    var options = preference.pick('avoidTolls', 'avoidHighways');
+
                     var now = moment();
                     var nowInMins = now.hours() * 60 + now.minutes();
 
                     if (home && work) {
                         if (nowInMins > (start + end) / 2) { //pass the mid of the day
-                            this.requestForDirection(work, home);
+                            this.requestForDirection(work, home, options);
                             return;
                         }
 
-                        this.requestForDirection(home, work);
+                        this.requestForDirection(home, work, options);
                     }
                 }.bind(this));
         }.bind(this);
@@ -51,15 +53,17 @@ define(function (require) {
 
     };
 
-    Page.prototype.requestForDirection = function (origin, destination) {
+    Page.prototype.requestForDirection = function (origin, destination, options) {
         var check = function () {
             console.log('checking for direction ' + origin + ' AND ' + destination);
             return new Promise(function (resolve, reject) {
-                var request = {
+                var request = _.extend({
                     origin: origin,
                     destination: destination,
-                    travelMode: google.maps.TravelMode.DRIVING
-                };
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    avoidTolls: false,
+                    avoidHighways: false
+                }, options);
                 var directionsService = new google.maps.DirectionsService();
 
                 directionsService.route(request, function (response, status) {
@@ -73,10 +77,15 @@ define(function (require) {
                         var shortestRoute = routes.at(0);
 
                         //set the badge using text return by google map
+                        chrome.browserAction.setTitle({
+                            title: shortestRoute.get('summary')
+                        });
+
                         chrome.browserAction.setBadgeText({
                             text: shortestRoute.get('legs')[0].duration.text
                         });
 
+//                        console.log(request, shortestRoute.toJSON());
                         return resolve();
                     }
                     reject();
