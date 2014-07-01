@@ -1,0 +1,13 @@
+{
+    "options": "Options"
+    ,"homeAddress": "Home Address"
+    ,"workAddress": "Work Address"
+    ,"avoidTolls": "Avoid Tolls"
+    ,"avoidHighways": "Avoid Highways"
+    ,"from": "From"
+    ,"to": "To"
+    ,"routeOptions": "Route Options"
+    ,"workingHours": "Working Hours"
+    ,"workingHoursHelpText": "Working Hours are used to detect the direction from home-to-work vs work-to-home"
+
+}

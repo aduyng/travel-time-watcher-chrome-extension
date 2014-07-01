@@ -1,0 +1,138 @@
+//@theme : 'spacelab';
+// Core variables and mixins
+//@import "vendors/bootswatch/@{theme}/variables";
+@import "vendors/bootstrap/less/variables";
+@import "vendors/bootstrap/less/mixins";
+
+// Reset
+@import "vendors/bootstrap/less/normalize";
+@import "vendors/bootstrap/less/print";
+
+// Core CSS
+@import "vendors/bootstrap/less/scaffolding";
+@import "vendors/bootstrap/less/type";
+@import "vendors/bootstrap/less/code";
+@import "vendors/bootstrap/less/grid";
+@import "vendors/bootstrap/less/tables";
+@import "vendors/bootstrap/less/forms";
+@import "vendors/bootstrap/less/buttons";
+
+// Components
+@import "vendors/bootstrap/less/component-animations";
+@import "vendors/bootstrap/less/glyphicons";
+@import "vendors/bootstrap/less/dropdowns";
+@import "vendors/bootstrap/less/button-groups";
+@import "vendors/bootstrap/less/input-groups";
+@import "vendors/bootstrap/less/navs";
+@import "vendors/bootstrap/less/navbar";
+@import "vendors/bootstrap/less/breadcrumbs";
+@import "vendors/bootstrap/less/pagination";
+@import "vendors/bootstrap/less/pager";
+@import "vendors/bootstrap/less/labels";
+@import "vendors/bootstrap/less/badges";
+@import "vendors/bootstrap/less/jumbotron";
+@import "vendors/bootstrap/less/thumbnails";
+@import "vendors/bootstrap/less/alerts";
+@import "vendors/bootstrap/less/progress-bars";
+@import "vendors/bootstrap/less/media";
+@import "vendors/bootstrap/less/list-group";
+@import "vendors/bootstrap/less/panels";
+@import "vendors/bootstrap/less/wells";
+@import "vendors/bootstrap/less/close";
+
+//Components w/ JavaScript
+@import "vendors/bootstrap/less/modals";
+@import "vendors/bootstrap/less/tooltip";
+@import "vendors/bootstrap/less/popovers";
+@import "vendors/bootstrap/less/carousel";
+
+//Utility classes
+@import "vendors/bootstrap/less/utilities";
+@import "vendors/bootstrap/less/responsive-utilities";
+//@import "vendors/bootswatch/@{theme}/bootswatch";
+
+@import "vendors/font-awesome/less/font-awesome";
+@import (inline) "vendors/nprogress/nprogress.css";
+@import (inline) "vendors/toastr/toastr.css";
+@import (inline) "vendors/ladda/dist/ladda.min.css";
+
+@nav-height: 0px;
+body {
+  padding-top: @nav-height;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.toast-top-right {
+  top: @nav-height + 12px;
+}
+
+.nav-container {
+  .navbar {
+    z-index: 99;
+  }
+}
+
+.main-container {
+  padding-bottom: 2em;
+  .page-header {
+    margin-top: 10px;
+  }
+  .page-body {
+    padding-top: 1em;
+  }
+
+  .page-footer {
+    border-top: 1px solid @table-border-color;
+    padding-top: 1em;
+    margin-top: 1em;
+  }
+}
+
+.icon-facebook-sign {
+  color: #3B5998;
+}
+
+.icon-twitter-sign {
+  color: #4099FF;
+}
+
+.icon-google-plus-sign {
+  color: #D34836;
+
+}
+
+.icon-tumblr-sign {
+  color: #2C4762;
+}
+
+.icon-pinterest-sign {
+  color: #C62E33;
+}
+
+.icon-envelope {
+  color: #FBCC70;
+}
+
+.btn-list-item {
+  text-align: left;
+  padding-left: 5px;
+  .right {
+    padding-right: 5px;
+  }
+}
+
+.percentage {
+  &:after {
+    content: '%';
+  }
+}
+
+input[type="number"] {
+  text-align: right;
+}

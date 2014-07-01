@@ -1,0 +1,28 @@
+{
+    "name": "Travel Time Watcher",
+    "version": "0.0.2",
+    "manifest_version": 2,
+    "description": "Showing the time travel between home address and work address periodically.",
+    "icons": {
+        "16": "images/icon/16.png",
+        "128": "images/icon/128.png"
+    },
+    "background": {
+        "page": "index.html#background/index"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "images/icon/19.png",
+            "38": "images/icon/38.png"
+        },
+        "default_popup": "index.html#popup/index"
+    },
+    "options_page": "index.html#options/index",
+    "permissions": [
+        "tabs",
+        "http://*/*",
+        "https://*/*",
+        "storage"
+    ],
+    "content_security_policy": "script-src 'self' https://*.google.com https://*.gstatic.com https://*.googleapis.com 'unsafe-eval'; object-src 'self'"
+}

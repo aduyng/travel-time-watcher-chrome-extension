@@ -1,0 +1,43 @@
+<div class="page-header">
+    <h3>{{$ options}}</h3>
+</div>
+
+<div>
+    <div class="form-group">
+        <label for="{{id}}-home-address">{{$ homeAddress}}</label>
+        <input type="text" class="form-control {{id}}-field" id="{{id}}-home-address" value="{{data.homeAddress}}"/>
+    </div>
+
+    <div class="form-group">
+        <label for="{{id}}-work-address">{{$ workAddress}}</label>
+        <input type="text" class="form-control {{id}}-field" id="{{id}}-work-address" value="{{data.workAddress}}"/>
+    </div>
+
+    <div class="form-group">
+        <label for="{{id}}-working-hours-start">{{$ workingHours}}</label>
+
+        <p class="help-block">{{$ workingHoursHelpText}}</p>
+
+        <div class="row">
+            <div class="col-xs-3 form-inline">
+                {{$ from}} <input type="time" class="form-control" id="{{id}}-working-hours-start" value="{{formatShortTimeForTimeInput data.workingHoursStart}}"/>
+            </div>
+            <div class="col-xs-3 form-inline">
+                {{$ to}} <input type="time" class="form-control" id="{{id}}-working-hours-end" value="{{formatShortTimeForTimeInput data.workingHoursEnd}}"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{$ routeOptions}}</label>
+        <div>
+            <label class="checkbox-inline">
+        <input type="checkbox" class="{{id}}-field" id="{{id}}-avoidTolls" {{#if data.avoidTolls}}checked{{/if}}> {{$ avoidTolls}}
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" class="{{id}}-field" id="{{id}}-avoidHighways" {{#if data.avoidHighways}}checked{{/if}}> {{$ avoidHighways}}
+            </label>
+        </div>
+    </div>
+    <button type="submit" id="{{id}}-save" class="btn btn-lg btn-primary"><i class="fa fa-save"></i> Save</button>
+</div>
