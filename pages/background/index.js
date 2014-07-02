@@ -1,4 +1,4 @@
-/*global _, google*/
+/*global _, google, chrome */
 define(function (require) {
     var Super = require('views/page'),
         Preference = require('models/preference'),
@@ -9,6 +9,19 @@ define(function (require) {
     Page.prototype.initialize = function (options) {
         //super(options)
         Super.prototype.initialize.call(this, options);
+
+        //listening to changes on user's preferences
+        this.listenToUserPreferenceChanges();
+
+    };
+
+    Page.prototype.listenToUserPreferenceChanges = function(){
+        chrome.storage.onChanged.addListener(function(changes, namespace) {
+            //Preference model is the only model and its id is preference
+            if( namespace == 'sync' && changes['Preference-preference'] ){
+                this.startWatching();
+            }
+        }.bind(this));
     };
 
     Page.prototype.render = function () {
@@ -23,7 +36,13 @@ define(function (require) {
             }.bind(this));
     };
 
+
+
     Page.prototype.startWatching = function () {
+        if( this.intervalHandler ){
+            clearInterval(this.intervalHandler);
+        }
+
         var watch = function () {
             //read the preference from sync first
             var preference = new Preference();
@@ -49,7 +68,7 @@ define(function (require) {
                 }.bind(this));
         }.bind(this);
         watch();
-        setInterval(watch, 15 * 60 * 1000); //15 mins
+        this.intervalHandler = setInterval(watch, 15 * 60 * 1000); //15 mins
 
     };
 
